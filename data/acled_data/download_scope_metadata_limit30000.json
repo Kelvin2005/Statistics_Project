@@ -1,0 +1,65 @@
+{
+  "downloaded_at": "2026-05-28T22:04:45",
+  "api_base": "https://acleddata.com/api/acled/read",
+  "api_scope": {
+    "format": "json",
+    "countries": [
+      "Yemen",
+      "Saudi Arabia",
+      "Oman",
+      "Djibouti",
+      "Eritrea",
+      "Somalia",
+      "Indian Ocean",
+      "Red Sea",
+      "Gulf of Aden"
+    ],
+    "event_date": "2023-01-01|2026-05-28",
+    "event_date_where": "BETWEEN",
+    "limit": 30000,
+    "page_start": 1,
+    "with_total": false
+  },
+  "local_filter_scope": {
+    "keywords": [
+      "Houthi",
+      "Houthis",
+      "Ansar Allah",
+      "Ansarallah",
+      "Red Sea",
+      "Gulf of Aden",
+      "Aden Gulf",
+      "Bab el-Mandeb",
+      "Bab al-Mandab",
+      "al-Hudaydah",
+      "Hodeidah",
+      "Hudaydah",
+      "Sa'dah",
+      "Saada",
+      "Sanaa",
+      "Sana'a",
+      "Marib",
+      "Ma'rib"
+    ],
+    "searched_columns": [
+      "actor1",
+      "actor2",
+      "assoc_actor_1",
+      "assoc_actor_2",
+      "location",
+      "admin1",
+      "admin2",
+      "admin3",
+      "notes",
+      "tags"
+    ]
+  },
+  "outputs": {
+    "raw_candidate_file": "data/acled_data/red_sea_yemen_candidate_2023_plus.csv",
+    "filtered_file": "data/acled_data/red_sea_yemen_houthi_related_2023_plus_limit30000.csv"
+  },
+  "row_counts": {
+    "raw_candidate_rows": 35429,
+    "filtered_rows": 22688
+  }
+}
