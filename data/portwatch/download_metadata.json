@@ -1,0 +1,41 @@
+{
+  "downloaded_at": "2026-05-29T01:22:41+00:00",
+  "source": "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query",
+  "chokepoints": {
+    "chokepoint1": "Suez Canal",
+    "chokepoint4": "Bab el-Mandeb Strait",
+    "chokepoint7": "Cape of Good Hope"
+  },
+  "start_date": "2023-10-01",
+  "end_date": null,
+  "fields": [
+    "date",
+    "year",
+    "month",
+    "day",
+    "portid",
+    "portname",
+    "n_container",
+    "n_dry_bulk",
+    "n_general_cargo",
+    "n_roro",
+    "n_tanker",
+    "n_cargo",
+    "n_total",
+    "capacity_container",
+    "capacity_dry_bulk",
+    "capacity_general_cargo",
+    "capacity_roro",
+    "capacity_tanker",
+    "capacity_cargo",
+    "capacity"
+  ],
+  "row_count": 2901,
+  "date_min": "2023-10-01",
+  "date_max": "2026-05-24",
+  "outputs": {
+    "long_csv": "data/portwatch/portwatch_chokepoints_long.csv",
+    "wide_csv": "data/portwatch/portwatch_chokepoints_wide.csv",
+    "analysis_csv": "data/portwatch/portwatch_red_sea_analysis.csv"
+  }
+}
