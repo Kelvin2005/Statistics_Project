@@ -158,27 +158,27 @@ VAR 结果应解释为动态相关关系，而不是严格因果关系。若某�
 - statsmodels VARMAX impulse responses 说明：  
   https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.varmax.VARMAX.impulse_responses.html
 
-## 6. OLS 回归与双对数模型
+## 6. 线性回归与分段趋势
 
 ### 基本思想
 
-OLS 回归用于估计解释变量和因变量之间的平均线性关系。论文中对不同船型建立如下模型：
+OLS 回归用于估计解释变量和因变量之间的平均线性关系。本文不使用 OLS 来研究船型敏感性，而是把它作为中断时间序列和 Chow 结构突变检验的基础工具。中断时间序列中的分段趋势可写为：
 
 ```text
-ln(ship_flow_t + 1)
-= β_0 + β_1 ln(attack_count_t + 1)
-+ β_2 ln(attack_count_{t-1} + 1) + ε_t
+Y_t = beta_0 + beta_1 time_t + beta_2 post_t
+      + beta_3 time_after_t + weekday_FE + error_t
 ```
 
-### 为什么使用对数
+### 为什么这样设定
 
-- 通行量和袭击事件数是非负计数变量，可能有极端值。
-- `ln(x + 1)` 可以处理零值。
-- 双对数模型中的系数可近似理解为弹性，即袭击事件变化与通行量百分比变化之间的关系。
+- `time_t` 捕捉断点前的原有趋势。
+- `post_t` 捕捉 2023 年 11 月 19 日后的即时水平变化。
+- `time_after_t` 捕捉断点后的趋势变化。
+- `weekday_FE` 控制日度数据中可能存在的星期效应。
 
 ### 本文中的作用
 
-分船型 OLS 是辅助检验，用来观察集装箱船、干散货船和油轮是否对袭击事件有不同响应。由于结果不显著，论文不能声称某一船型更敏感。
+线性分段回归帮助论文回答一个更可验证的问题：危机升级节点之后，航道通行结构是否偏离原有趋势。它不尝试回答单船风险、AIS 开关或船型敏感性问题。
 
 ### 学习链接
 
@@ -189,7 +189,77 @@ ln(ship_flow_t + 1)
 - statsmodels OLS 文档：  
   https://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.OLS.html
 
-## 7. Newey-West / HAC 稳健标准误
+## 7. 事件研究
+
+### 基本思想
+
+事件研究把某个清楚发生的外生事件设为 `t = 0`，比较事件前后的结果变量路径。本文把 2023 年 11 月 19 日 Galaxy Leader 劫持事件设为红海危机升级节点，观察断点前 49 天和断点后 180 天内各航道通行指标的变化。
+
+### 用在论文中的原因
+
+事件研究能直观展示“变化何时开始”。本文结果显示，断点后前 30 天变化不大，但 31-90 天之后，曼德海峡和苏伊士通行量明显下降，好望角通行量和绕航指数明显上升。这与航运路线调整需要时间的理论机制一致。
+
+### 解释注意
+
+事件研究本身主要是描述性准实验方法。若没有对照组，它不能完全排除其他同期冲击。因此本文把它与中断时间序列和结构突变检验配合使用。
+
+### 学习链接
+
+- Event studies and causal inference 综述入口：  
+  https://mixtape.scunning.com/09-difference_in_differences
+- World Bank Impact Evaluation in Practice 资源：  
+  https://openknowledge.worldbank.org/entities/publication/1a2e6c37-5815-5028-8b31-5a747ccbe357
+
+## 8. 中断时间序列 ITS
+
+### 基本思想
+
+中断时间序列适合评估某个明确时间点发生的政策、灾害或冲击。基本分段回归形式是：
+
+```text
+Y_t = beta_0 + beta_1 time_t + beta_2 post_t
+      + beta_3 time_after_t + controls + error_t
+```
+
+其中 `beta_2` 表示断点后的即时水平变化，`beta_3` 表示断点后的趋势变化。
+
+### 用在论文中的原因
+
+红海危机升级不是随机实验，但 2023 年 11 月 19 日是清楚可定位的外部事件。ITS 可以检验断点后航运通行量是否偏离原有趋势。本文结果显示，好望角通行量和绕航指数的断点后斜率显著上升，苏伊士和曼德海峡通行量的断点后斜率显著下降。
+
+### 解释注意
+
+ITS 的关键假设是：如果没有断点事件，结果变量会继续沿断点前趋势变化。本文断点前窗口只有 49 天，因此应表述为探索性准因果证据，而不是最终强因果结论。
+
+### 学习链接
+
+- Interrupted time series regression tutorial：  
+  https://pmc.ncbi.nlm.nih.gov/articles/PMC5407170/
+- Methods for evaluating causality in observational studies：  
+  https://pmc.ncbi.nlm.nih.gov/articles/PMC7081045/
+
+## 9. Chow 结构突变检验
+
+### 基本思想
+
+Chow 检验用于判断某个已知断点前后，线性模型的系数是否可以视为同一组参数。直观地说，它比较“全样本一条回归线”与“断点前后一人一条回归线”的拟合差异。
+
+### 用在论文中的原因
+
+本文已经知道 2023 年 11 月 19 日是外部升级节点，因此可以检验航运指标在这个断点前后是否存在结构性变化。结果显示，好望角通行量和苏伊士通行占比的结构突变证据更明显。
+
+### 解释注意
+
+Chow 检验要求断点预先给定，不能先看数据再挑最显著日期。本文断点来自 Galaxy Leader 劫持这一外部事件，因此比数据挖掘式断点更稳。
+
+### 学习链接
+
+- Chow Test for Structural Breaks 说明：  
+  https://communities.sas.com/t5/SAS-Code-Examples/Chow-Test-for-Structural-Breaks/ta-p/887904
+- 结构突变概念说明：  
+  https://metricgate.com/docs/chow-test-structural-break/
+
+## 10. Newey-West / HAC 稳健标准误
 
 ### 基本思想
 
@@ -197,13 +267,13 @@ ln(ship_flow_t + 1)
 
 ### 用在论文中的原因
 
-论文的分船型回归使用周度时间序列数据。如果直接使用普通标准误，显著性检验可能过于乐观。因此脚本中使用：
+论文的中断时间序列使用日度通行数据。如果直接使用普通标准误，显著性检验可能过于乐观。因此脚本中使用：
 
 ```python
-ols_results = ols_model.fit(cov_type="HAC", cov_kwds={"maxlags": 2})
+model.fit(cov_type="HAC", cov_kwds={"maxlags": 14})
 ```
 
-这表示使用 HAC 稳健标准误，并允许最多 2 周的残差自相关。
+这表示使用 HAC 稳健标准误，并允许最多 14 天的残差自相关。
 
 ### 注意事项
 
@@ -218,7 +288,7 @@ Newey-West 修正的是标准误，不会改变 OLS 系数本身。它让 p 值�
 - Newey-West 原始论文信息：  
   https://www.resea.org/10.2307/1913610
 
-## 8. AIC 信息准则
+## 11. AIC 信息准则
 
 ### 基本思想
 
@@ -237,16 +307,16 @@ AIC 用来在多个模型之间选择较合适的复杂度。它平衡两个目�
 - Penn State STAT 501 模型构建部分：  
   https://online.stat.psu.edu/stat501/
 
-## 9. 论文答辩时的简短说法
+## 12. 论文答辩时的简短说法
 
 如果被问“你的论文到底验证了什么”，可以这样回答：
 
 ```text
-本文验证的是胡塞相关安全事件与红海航运通行结构之间的聚合层面动态关联。ACLED 提供安全事件时间序列，PortWatch 提供航道通行时间序列。VAR 用于检验安全事件和航道通行量之间的滞后动态关系，IRF 用于展示冲击后的响应路径，分船型 OLS + Newey-West 用于做辅助的船型差异检验。由于缺少历史 AIS 单船轨迹和保险、运价等控制变量，本文不声称识别了单船遇袭风险或严格因果效应。
+本文验证的是胡塞相关安全事件与红海航运通行结构之间的聚合层面动态关联。ACLED 提供安全事件时间序列，PortWatch 提供航道通行时间序列。VAR 用于检验安全事件和航道通行量之间的滞后动态关系，IRF 用于展示冲击后的响应路径；事件研究、ITS 和 Chow 检验围绕 2023 年 11 月 19 日升级节点检验断点前后航运结构是否变化。由于缺少历史 AIS 单船轨迹、保险、运价和船东决策数据，本文主动放弃单船遇袭风险、AIS 开关影响和船型敏感性问题。
 ```
 
-如果被问“为什么结果不显著还可以写”，可以这样回答：
+如果被问“为什么不研究船型或 AIS”，可以这样回答：
 
 ```text
-不显著结果说明当前聚合数据不足以支持某类船型显著更敏感的结论。这恰好帮助限定论文边界：总体绕航结构可以用现有数据讨论，但船型差异和单船风险需要更细粒度数据。
+当前数据是 ACLED 事件级数据和 PortWatch 聚合航道通行数据，无法识别具体船舶、船东、AIS 状态或单船航线选择。把这些问题写成研究问题会超出数据能力。因此论文只保留能够被现有数据验证的聚合航道结构变化。
 ```
