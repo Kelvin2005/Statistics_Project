@@ -1,0 +1,22 @@
+\contentsline {section}{摘要}{3}{section*.2}%
+\contentsline {section}{1. 引言}{4}{section*.3}%
+\contentsline {section}{2. 文献与现实背景}{5}{section*.4}%
+\contentsline {subsection}{2.1 理论机制：安全冲击、航运成本与绕航决策}{6}{subsection*.5}%
+\contentsline {subsection}{2.2 本文能验证什么}{7}{subsection*.6}%
+\contentsline {subsection}{2.3 断点识别逻辑}{7}{subsection*.7}%
+\contentsline {section}{3. 数据来源与变量构造}{8}{section*.8}%
+\contentsline {subsection}{3.1 ACLED 胡塞/红海相关事件数据}{8}{subsection*.9}%
+\contentsline {subsection}{3.2 PortWatch 航道通行数据}{8}{subsection*.10}%
+\contentsline {subsection}{3.3 数据合并与周度聚合}{10}{subsection*.11}%
+\contentsline {section}{4. 研究方法}{10}{section*.12}%
+\contentsline {subsection}{4.1 向量自回归模型}{11}{subsection*.13}%
+\contentsline {subsection}{4.2 事件研究、中断时间序列与结构突变检验}{13}{subsection*.14}%
+\contentsline {section}{5. 实证结果}{14}{section*.15}%
+\contentsline {subsection}{5.1 VAR 模型结果}{14}{subsection*.16}%
+\contentsline {subsection}{5.2 脉冲响应解释}{15}{subsection*.17}%
+\contentsline {subsection}{5.3 2023 年 11 月升级节点的事件研究与断点检验}{15}{subsection*.18}%
+\contentsline {section}{6. 讨论}{16}{section*.19}%
+\contentsline {section}{7. 稳健性与局限}{19}{section*.20}%
+\contentsline {section}{8. 结论}{19}{section*.21}%
+\contentsline {section}{参考文献}{20}{section*.22}%
+\contentsline {section}{附录：复现说明}{21}{section*.23}%
