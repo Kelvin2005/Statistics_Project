@@ -1,0 +1,105 @@
+\begin{thebibliography}{13}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{Maritime Administration}(2023)]{marad2023redsea}
+{Maritime Administration}.
+\newblock 2023-005a-{Red Sea}-{Hijacking}, 2023.
+\newblock URL
+  \url{https://www.maritime.dot.gov/msci/2023-005a-red-sea-hijacking}.
+\newblock Accessed 2026-06-14.
+
+\bibitem[{PBS NewsHour}(2023)]{pbs2023houthi}
+{PBS NewsHour}.
+\newblock Yemen's {Houthi} rebels hijack {Israeli}-linked ship in the {Red
+  Sea}, take crew hostage, 2023.
+\newblock URL
+  \url{https://www.pbs.org/newshour/world/yemens-houthi-rebels-hijack-israeli-linked-ship-in-the-red-sea-take-crew-hostage}.
+\newblock Accessed 2026-06-14.
+
+\bibitem[{UN Trade and Development}(2024)]{unctad2024troubled}
+{UN Trade and Development}.
+\newblock Navigating troubled waters: Impact to global trade of disruption of
+  shipping routes in the {Red Sea}, {Black Sea} and {Panama Canal}, 2024.
+\newblock URL
+  \url{https://unctad.org/publication/navigating-troubled-waters-impact-global-trade-disruption-shipping-routes-red-sea-black}.
+\newblock Accessed 2026-06-14.
+
+\bibitem[{International Monetary Fund}(2024)]{imf2024redsea}
+{International Monetary Fund}.
+\newblock {Red Sea Attacks Disrupt Global Trade}, 2024.
+\newblock URL
+  \url{https://www.imf.org/en/blogs/articles/2024/03/07/red-sea-attacks-disrupt-global-trade}.
+\newblock Accessed 2026-06-14.
+
+\bibitem[{U.S. Energy Information Administration}(2024)]{eia2024redsea}
+{U.S. Energy Information Administration}.
+\newblock {Red Sea} disruptions increase oil flows around {Cape of Good Hope},
+  2024.
+\newblock URL \url{https://www.eia.gov/todayinenergy/detail.php?id=62263}.
+\newblock Accessed 2026-06-14.
+
+\bibitem[Notteboom et~al.(2024)Notteboom, Haralambides, and
+  Cullinane]{notteboom2024red}
+Theo Notteboom, Hercules Haralambides, and Kevin Cullinane.
+\newblock The {Red Sea} crisis: ramifications for vessel operations, shipping
+  networks, and maritime supply chains.
+\newblock \emph{Maritime Economics \& Logistics}, 26:\penalty0 1--20, 2024.
+\newblock \doi{10.1057/s41278-024-00287-z}.
+\newblock URL \url{https://doi.org/10.1057/s41278-024-00287-z}.
+
+\bibitem[{ACLED}(n.d.{\natexlab{a}})]{acled_codebook}
+{ACLED}.
+\newblock {ACLED Codebook}, n.d.{\natexlab{a}}.
+\newblock URL \url{https://acleddata.com/knowledge-base/codebook/}.
+\newblock Accessed 2026-06-14.
+
+\bibitem[{ACLED}(n.d.{\natexlab{b}})]{acled_event_types}
+{ACLED}.
+\newblock What types of events does {ACLED} code?, n.d.{\natexlab{b}}.
+\newblock URL
+  \url{https://acleddata.com/faq/what-types-events-does-acled-code}.
+\newblock Accessed 2026-06-14.
+
+\bibitem[{International Monetary Fund} and {University of
+  Oxford}(2023)]{imf_oxford_portwatch2023}
+{International Monetary Fund} and {University of Oxford}.
+\newblock {IMF} and {University of Oxford} launch {PortWatch} platform to
+  monitor and simulate trade disruptions, 2023.
+\newblock URL
+  \url{https://www.imf.org/en/news/articles/2023/11/13/pr23390-imf-university-of-oxford-launch-portwatch-platform-monitor-simulate-trade-disruptions}.
+\newblock Accessed 2026-06-14.
+
+\bibitem[Sims(1980)]{sims1980macroeconomics}
+Christopher~A. Sims.
+\newblock Macroeconomics and reality.
+\newblock \emph{Econometrica}, 48\penalty0 (1):\penalty0 1--48, 1980.
+\newblock \doi{10.2307/1912017}.
+
+\bibitem[L{\"u}tkepohl(2005)]{lutkepohl2005new}
+Helmut L{\"u}tkepohl.
+\newblock \emph{New Introduction to Multiple Time Series Analysis}.
+\newblock Springer, Berlin, 2005.
+\newblock \doi{10.1007/978-3-540-27752-1}.
+
+\bibitem[Bernal et~al.(2017)Bernal, Cummins, and
+  Gasparrini]{bernal2017interrupted}
+James~Lopez Bernal, Steven Cummins, and Antonio Gasparrini.
+\newblock Interrupted time series regression for the evaluation of public
+  health interventions: a tutorial.
+\newblock \emph{International Journal of Epidemiology}, 46\penalty0
+  (1):\penalty0 348--355, 2017.
+\newblock \doi{10.1093/ije/dyw098}.
+\newblock URL \url{https://doi.org/10.1093/ije/dyw098}.
+
+\bibitem[Newey and West(1987)]{newey1987simple}
+Whitney~K. Newey and Kenneth~D. West.
+\newblock A simple, positive semi-definite, heteroskedasticity and
+  autocorrelation consistent covariance matrix.
+\newblock \emph{Econometrica}, 55\penalty0 (3):\penalty0 703--708, 1987.
+\newblock \doi{10.2307/1913610}.
+
+\end{thebibliography}

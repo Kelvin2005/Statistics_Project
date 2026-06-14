@@ -13,7 +13,17 @@ New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
 
 Push-Location $scriptDir
 try {
-    for ($i = 1; $i -le 3; $i++) {
+    xelatex --interaction=nonstopmode --halt-on-error --output-directory=../paper red_sea_houthi_shipping_paper.tex
+
+    Push-Location $outputDir
+    try {
+        bibtex red_sea_houthi_shipping_paper
+    }
+    finally {
+        Pop-Location
+    }
+
+    for ($i = 1; $i -le 2; $i++) {
         xelatex --interaction=nonstopmode --halt-on-error --output-directory=../paper red_sea_houthi_shipping_paper.tex
     }
 }
