@@ -1,5 +1,4 @@
 data/acled_API.json
 data/aishub/raw/
-__pycache__/
 scripts/__pycache__/
 *.pyc

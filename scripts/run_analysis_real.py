@@ -1,8 +1,12 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
 import statsmodels.api as sm
 from statsmodels.tsa.api import VAR
+
+plt.rcParams['axes.unicode_minus'] = False
+CHINESE_FONT = FontProperties(fname="/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf")
 
 # ==============================================================================
 # 1. 真实数据读取与对齐管道 (Data Pipeline)
@@ -66,9 +70,14 @@ print(var_results.summary())
 irf = var_results.irf(8)
 
 # 绘制冲击反应图
-fig = irf.plot(impulse='attack_count', orthogonalized=True)
+fig = irf.plot(impulse='attack_count', orth=True)
 fig.set_size_inches(12, 8)
-plt.suptitle('胡塞武装袭击对航道通行量的动态脉冲响应 (真实数据拟合)', fontsize=14, y=1.02)
+plt.suptitle(
+    '胡塞武装袭击对航道通行量的动态脉冲响应',
+    fontsize=14,
+    y=1.02,
+    fontproperties=CHINESE_FONT,
+)
 plt.grid(True)
 plt.show()
 
